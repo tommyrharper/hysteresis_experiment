@@ -1,0 +1,20 @@
+# Apparatus constants as [value, uncertainty], SI units.
+
+[circuit]
+N1 = [400, 1]               # Primary turns
+N2 = [500, 1]               # Secondary turns
+R1 = [2.05, 0.03]           # ohm, primary series resistor (V_x measured across it)
+R2 = [9912, 2]              # ohm, integrator resistor
+C = [434.1e-9, 0.05e-9]     # F, integrator capacitor
+L = [0.0430, 0.0005]        # m, coil length (magnetic path length)
+
+# Sample cross-sectional area, m^2. "air" is the empty coil interior, used for the air-flux correction.
+# Run names are matched to these by prefix, e.g. "cu_ni_ice_2" -> cu_ni.
+[area]
+air = [3.4e-5, 0.1e-5]
+mild_steel = [7.79e-6, 0.05e-6]
+iron = [2.67e-6, 0.04e-6]
+cu_ni = [1.956e-5, 0.008e-5]
+
+[scope]
+gain_acc = 0.03             # DC gain accuracy per channel (check PicoScope 2000 series datasheet)
