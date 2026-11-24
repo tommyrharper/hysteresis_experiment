@@ -45,10 +45,11 @@ def measure(A_range, B_range):
     return times[::downsample], voltages["A"][::downsample], voltages["B"][::downsample], peak, clipped
 
 
-def measure_autorange(headroom=0.8, max_tries=10):
+def measure_autorange(headroom=0.8, max_tries=10, start=None):
     """Recaptures, moving each channel to the finest range with full scale above peak/headroom, until settled.
-    A range that ever clipped is never used again, so it cannot oscillate."""
-    ranges = {"A": 1, "B": 1}
+    A range that ever clipped is never used again, so it cannot oscillate.
+    start: initial ranges, e.g. the last settled ones, so repeated captures settle in one try."""
+    ranges = dict(start or {"A": 1, "B": 1})
     too_small = {"A": 0, "B": 0}   # Largest range seen to clip, per channel
 
     for attempt in range(max_tries):
